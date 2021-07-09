@@ -20,6 +20,7 @@ jobs:
           yarn docs:build
           mkdir -p docs/.vuepress/dist/console/
           mv dist/* docs/.vuepress/dist/console/
+          ls docs/.vuepress/dist
 
 
       - name: Deploy 🚀
@@ -27,6 +28,6 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist/
+          FOLDER: docs/.vuepress/dist
           TARGET-FOLDER: console
           CLEAN: true
