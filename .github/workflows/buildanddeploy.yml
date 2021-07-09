@@ -21,6 +21,8 @@ jobs:
           mkdir -p docs/.vuepress/dist/console/
           mv dist/* docs/.vuepress/dist/console/
           ls docs/.vuepress/dist
+          rm -rf dist/*
+          mv docs/.vuepress/dist/* dist/
 
 
       - name: Deploy 🚀
@@ -28,6 +30,6 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist
+          FOLDER: dist
           TARGET-FOLDER: console
           CLEAN: true
