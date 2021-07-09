@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
-        with:          
-          repository: ${{ secrets.REPO }}          
+        with:
+          repository: ${{ secrets.REPO }}
           ref: master
           token: ${{ secrets.ACCESS_TOKEN }}
 
@@ -18,15 +18,15 @@ jobs:
           yarn
           yarn build
           yarn docs:build
-          ls docs/.vuepress/dist
-          mkdir -p dist/docs
-          mv docs/.vuepress/dist/* dist/docs
-          
+          mkdir -p docs/.vuepress/dist/console/
+          mv dist/* docs/.vuepress/dist/console/
+
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: dist
+          FOLDER: docs/.vuepress/dist/
           TARGET-FOLDER: console
           CLEAN: true
